@@ -245,3 +245,13 @@ app.listen(port, (error) => {
   if (!error) console.log("Server Running on port " + port);
   else console.log("Error : ", error);
 });
+
+require('dotenv').config();
+
+const mongoose = require('mongoose');
+
+const mongoDBUrl = process.env.MONGODB_URL;
+
+mongoose.connect(mongoDBUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((error) => console.error('MongoDB connection error:', error));
